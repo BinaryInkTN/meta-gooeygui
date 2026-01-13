@@ -23,4 +23,5 @@ IMAGE_INSTALL:append = "\
 openbox \ 
 xterm \
 bash \
+vim \
 "

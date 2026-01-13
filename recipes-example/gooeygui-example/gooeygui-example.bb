@@ -6,14 +6,17 @@ SRC_URI="file://gooey_example.c"
 
 FILE_NAME="gooey_example"
 DEPENDS = "\
-    libgooeygui \
+    gooeygui-libc \
    "
-RDEPENDS:{PN} += " libgooeygui"
+RDEPENDS:{PN} += " gooeygui-libc"
 
 S = "${WORKDIR}"
-
+inherit pkgconfig
+INHIBIT_PACKAGE_STRIP = "1"
+INHIBIT_SYSROOT_STRIP = "1"
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 do_compile(){
-   ${CC} ${FILE_NAME}.c  -o ${FILE_NAME} \
+   ${CC} ${FILE_NAME}.c -g -O0 -o ${FILE_NAME} \
     ${LDFLAGS} \
      -I${STAGING_INCDIR}/Gooey \
      -I${STAGING_INCDIR}/GLPS \

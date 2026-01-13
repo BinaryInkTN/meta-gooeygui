@@ -16,7 +16,7 @@ void button_callback(void *user_data)
 int main()
 {
     Gooey_Init();
-    GooeyWindow *win = GooeyWindow_Create(10,10,"Advanced Tabs Example", 800, 600, true);
+    GooeyWindow *win = GooeyWindow_Create("Advanced Tabs Example",10,10, 800, 600, true);
     GooeyWindow_EnableDebugOverlay(win, 1);
     GooeyTheme *dark_mode = GooeyTheme_LoadFromFile("dark.json");
    // GooeyWindow_SetTheme(win, dark_mode);

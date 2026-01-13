@@ -7,30 +7,25 @@ DEPENDS = "\
     libx11 \
     virtual/egl \
     virtual/libgles2 \
-    virtual/libgl \
     gtk+3 \
     alsa-lib \
     freetype \
     mesa \
-    "
-RDEPENDS:{PN} = "\
-    mesa \
-    libx11 \
-    virtual/egl \
-    virtual/libgles2 \
-    virtual/libgl \
-    gtk+3 \
-    alsa-lib \
-    freetype \
-    "
-PROVIDES="libgooeygui" 
+    pkgconfig-native \
+"
+RDEPENDS:${PN} += "mesa-megadriver libgles2-mesa libegl-mesa"
+
 
 S = "${WORKDIR}/git"
 inherit pkgconfig  cmake 
 
+
+FILES:${PN} += "${libdir}/*.so*"
+FILES:${PN}-dev += "${includedir}/Gooey/*"
+
 EXTRA_OECMAKE = "\
--DUSE_BUNDLED_FREETYPE=OFF \
 -DGLES_ON=ON \
+-DUSE_BUNDLED_FREETYPE=OFF \
 "
 
-# effacer les chaltates 
+
